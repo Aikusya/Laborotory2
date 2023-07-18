@@ -137,4 +137,10 @@ public class MyArrayList<T> implements MyList<T> {
             return str1.compareTo(str2);
         }
     }
+
+    public void printArray(){
+        for(int i = 0; i < arr.length; i++){
+            System.out.println(arr[i]);
+        }
+    }
 }

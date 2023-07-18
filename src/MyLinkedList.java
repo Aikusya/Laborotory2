@@ -52,7 +52,24 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void add(T item, int index) {
-
+        checkIndex(index);
+        if(index == size){
+            add(item);
+            return;
+        }
+        MyNode newNode = new MyNode(item);
+        if (index == 0) {
+            newNode.next = head;
+            head.previous = newNode;
+            head = newNode;
+        } else {
+            MyNode current = getNodeAtIndex(index);
+            newNode.next = current;
+            newNode.previous = current.previous;
+            current.previous.next = newNode;
+            current.previous = newNode;
+        }
+        size++;
     }
 
     @Override
@@ -85,6 +102,12 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public int lastIndexOf(Object o) {
         return 0;
+    }
+
+    private void checkIndex(int index){
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Index not found");
+        }
     }
 
     @Override

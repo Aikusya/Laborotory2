@@ -87,7 +87,13 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        MyNode current = getNodeAtIndex(index);
+        removeNode(current);
+        return current.item;
     }
 
     @Override

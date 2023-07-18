@@ -193,4 +193,20 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
         }
         return current;
     }
+
+    private void removeNode(MyNode node) {
+        if (node == head) {
+            head = node.next;
+        } else {
+            node.previous.next = node.next;
+        }
+
+        if (node == tail) {
+            tail = node.previous;
+        } else {
+            node.next.previous = node.previous;
+        }
+
+        size--;
+    }
 }

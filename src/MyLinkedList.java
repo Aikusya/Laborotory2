@@ -74,6 +74,14 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public boolean remove(T item) {
+        MyNode current = head;
+        while (current != null) {
+            if (current.item.equals(item)) {
+                removeNode(current);
+                return true;
+            }
+            current = current.next;
+        }
         return false;
     }
 

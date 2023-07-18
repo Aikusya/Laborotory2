@@ -24,6 +24,14 @@ public class Main {
         //myArrayList.delete(3);
         //System.out.println(myArrayList.get(3));
         myArrayList.sort();
-        myArrayList.printArray();
+        //myArrayList.printArray();
+
+        MyLinkedList linkedList = new MyLinkedList();
+        linkedList.add(3);
+        linkedList.add(7);
+        linkedList.add(12);
+        linkedList.add(5);
+        linkedList.sort();
+        linkedList.print();
     }
 }

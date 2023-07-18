@@ -14,9 +14,14 @@ public class MyLinkedList<T> implements MyList<T> {
             this.next = null;
         }
     }
+
+    MyLinkedList(){
+        this.size = 0;
+    }
+
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -26,7 +31,16 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void add(T item) {
-
+        MyNode node = new MyNode(item);
+        if(size == 0){
+            head = node;
+        }
+        else {
+            tail.next = node;
+            node.previous = tail;
+        }
+        tail = node;
+        size++;
     }
 
     @Override

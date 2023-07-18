@@ -60,7 +60,9 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void clear() {
-
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
     }
 
     @Override

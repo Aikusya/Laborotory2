@@ -1,4 +1,4 @@
-public class MyLinkedList<T> implements MyList<T> {
+public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
     private MyNode head;
     private MyNode tail;
     private int size;
@@ -155,7 +155,6 @@ public class MyLinkedList<T> implements MyList<T> {
             MyNode current = head;
             while (current != null && current.next != null) {
                 if (current.item.compareTo(current.next.item) > 0) {
-                    // Swap the elements in the nodes
                     T temp = current.item;
                     current.item = current.next.item;
                     current.next.item = temp;
@@ -165,4 +164,14 @@ public class MyLinkedList<T> implements MyList<T> {
             }
         } while (swapped);
     }
+
+    public void print() {
+        MyNode current = head;
+        while (current != null) {
+            System.out.print(current.item + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
 }

@@ -87,13 +87,44 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
 
     @Override
     public T remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-
+        checkIndex(index);
         MyNode current = getNodeAtIndex(index);
         removeNode(current);
         return current.item;
+    }
+
+    private void removeNode(MyNode node) {
+        if (node == head) {
+            head = node.next;
+        } else {
+            node.previous.next = node.next;
+        }
+
+        if (node == tail) {
+            tail = node.previous;
+        } else {
+            node.next.previous = node.previous;
+        }
+
+        size--;
+    }
+
+    private MyNode getNodeAtIndex(int index) {
+        checkIndex(index);
+
+        MyNode current;
+        if (index < size / 2) {
+            current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i > index; i--) {
+                current = current.previous;
+            }
+        }
+        return current;
     }
 
     @Override
@@ -174,39 +205,5 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
         System.out.println();
     }
 
-    private MyNode getNodeAtIndex(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
 
-        MyNode current;
-        if (index < size / 2) {
-            current = head;
-            for (int i = 0; i < index; i++) {
-                current = current.next;
-            }
-        } else {
-            current = tail;
-            for (int i = size - 1; i > index; i--) {
-                current = current.previous;
-            }
-        }
-        return current;
-    }
-
-    private void removeNode(MyNode node) {
-        if (node == head) {
-            head = node.next;
-        } else {
-            node.previous.next = node.next;
-        }
-
-        if (node == tail) {
-            tail = node.previous;
-        } else {
-            node.next.previous = node.previous;
-        }
-
-        size--;
-    }
 }

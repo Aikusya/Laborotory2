@@ -26,6 +26,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void add(T item, int index) {
+        checkIndex(index);
         if(size == arr.length){
             increaseBuffer();
         }
@@ -42,6 +43,12 @@ public class MyArrayList<T> implements MyList<T> {
             newArr[i] = arr[i];
         }
         arr = newArr;
+    }
+
+    private void checkIndex(int index){
+        if(index<0||index>size){
+            throw new IndexOutOfBoundsException("Index does not exist");
+        }
     }
 
     @Override

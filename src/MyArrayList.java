@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MyArrayList<T> implements MyList<T> {
     private T[] arr;
     private int size;
@@ -90,7 +92,14 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        int index = -1;
+        for(int i = 0; i < size; i++){
+            if(Objects.equals(arr[i], o)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     @Override

@@ -174,4 +174,23 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
         System.out.println();
     }
 
+    private MyNode getNodeAtIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        MyNode current;
+        if (index < size / 2) {
+            current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i > index; i--) {
+                current = current.previous;
+            }
+        }
+        return current;
+    }
 }

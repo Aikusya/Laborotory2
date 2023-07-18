@@ -53,7 +53,18 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public boolean remove(T item) {
-        return false;
+        int index=0;
+        boolean found = false;
+        for(int i=0; i<size; i++){
+            if(arr[i]==item){
+                index = i;
+                found=true;
+            }
+        }
+        if(found){
+            remove(index);
+        }
+        return found;
     }
 
     @Override

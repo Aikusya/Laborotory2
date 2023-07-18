@@ -126,4 +126,15 @@ public class MyArrayList<T> implements MyList<T> {
             }
         }
     }
+    private int compare(T o1, T o2) {
+        if (o1 instanceof Number && o2 instanceof Number) {
+            Double num1 = ((Number) o1).doubleValue();
+            Double num2 = ((Number) o2).doubleValue();
+            return num1.compareTo(num2);
+        } else {
+            String str1 = String.valueOf(o1);
+            String str2 = String.valueOf(o2);
+            return str1.compareTo(str2);
+        }
+    }
 }
